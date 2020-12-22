@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/@google-cloud/firestore?activeTab=versions
 
+## [4.9.0](https://www.github.com/googleapis/nodejs-firestore/compare/v4.8.1...v4.9.0) (2020-12-22)
+
+
+### Features
+
+* adds UNORDERED_LIST type ([#1382](https://www.github.com/googleapis/nodejs-firestore/issues/1382)) ([5b43e7b](https://www.github.com/googleapis/nodejs-firestore/commit/5b43e7bcb2ea9c014587c84164f9ba8a0ed05397))
+
 ### [4.8.1](https://www.github.com/googleapis/nodejs-firestore/compare/v4.8.0...v4.8.1) (2020-12-16)
 
 
