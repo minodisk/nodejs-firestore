@@ -200,7 +200,7 @@ declare namespace FirebaseFirestore {
      * @param collectionPath A slash-separated path to a collection.
      * @return The `CollectionReference` instance.
      */
-    collection(collectionPath: string): CollectionReference<DocumentData>;
+    collection<T extends DocumentData>(collectionPath: string): CollectionReference<T>;
 
     /**
      * Gets a `DocumentReference` instance that refers to the document at the
@@ -209,7 +209,7 @@ declare namespace FirebaseFirestore {
      * @param documentPath A slash-separated path to a document.
      * @return The `DocumentReference` instance.
      */
-    doc(documentPath: string): DocumentReference<DocumentData>;
+    doc<T extends DocumentData>(documentPath: string): DocumentReference<T>;
 
     /**
      * Creates and returns a new Query that includes all documents in the
@@ -221,7 +221,7 @@ declare namespace FirebaseFirestore {
      * will be included. Cannot contain a slash.
      * @return The created `CollectionGroup`.
      */
-    collectionGroup(collectionId: string): CollectionGroup<DocumentData>;
+    collectionGroup<T extends DocumentData>(collectionId: string): CollectionGroup<T>;
 
     /**
      * Retrieves multiple documents from Firestore.
@@ -434,9 +434,9 @@ declare namespace FirebaseFirestore {
      * @param precondition A Precondition to enforce on this update.
      * @return This `Transaction` instance. Used for chaining method calls.
      */
-    update(
-      documentRef: DocumentReference<any>,
-      data: UpdateData,
+    update<T>(
+      documentRef: DocumentReference<T>,
+      data: Partial<T>,
       precondition?: Precondition
     ): Transaction;
 
@@ -473,8 +473,8 @@ declare namespace FirebaseFirestore {
      * @param precondition A Precondition to enforce for this delete.
      * @return This `Transaction` instance. Used for chaining method calls.
      */
-    delete(
-      documentRef: DocumentReference<any>,
+    delete<T>(
+      documentRef: DocumentReference<T>,
       precondition?: Precondition
     ): Transaction;
   }
@@ -515,8 +515,8 @@ declare namespace FirebaseFirestore {
      * delete fails, the promise is rejected with a
      * [BulkWriterError]{@link BulkWriterError}.
      */
-    delete(
-      documentRef: DocumentReference<any>,
+    delete<T>(
+      documentRef: DocumentReference<T>,
       precondition?: Precondition
     ): Promise<WriteResult>;
 
@@ -571,9 +571,9 @@ declare namespace FirebaseFirestore {
      * write fails, the promise is rejected with a
      * [BulkWriterError]{@link BulkWriterError}.
      */
-    update(
-      documentRef: DocumentReference<any>,
-      data: UpdateData,
+    update<T>(
+      documentRef: DocumentReference<T>,
+      data: Partial<T>,
       precondition?: Precondition
     ): Promise<WriteResult>;
 
@@ -773,9 +773,9 @@ declare namespace FirebaseFirestore {
      * @param precondition A Precondition to enforce on this update.
      * @return This `WriteBatch` instance. Used for chaining method calls.
      */
-    update(
-      documentRef: DocumentReference<any>,
-      data: UpdateData,
+    update<T>(
+      documentRef: DocumentReference<T>,
+      data: Partial<T>,
       precondition?: Precondition
     ): WriteBatch;
 
@@ -811,8 +811,8 @@ declare namespace FirebaseFirestore {
      * @param precondition A Precondition to enforce for this delete.
      * @return This `WriteBatch` instance. Used for chaining method calls.
      */
-    delete(
-      documentRef: DocumentReference<any>,
+    delete<T>(
+      documentRef: DocumentReference<T>,
       precondition?: Precondition
     ): WriteBatch;
 
@@ -979,7 +979,7 @@ declare namespace FirebaseFirestore {
      * @param precondition A Precondition to enforce on this update.
      * @return A Promise resolved with the write time of this update.
      */
-    update(data: UpdateData, precondition?: Precondition): Promise<WriteResult>;
+    update(data: Partial<T>, precondition?: Precondition): Promise<WriteResult>;
 
     /**
      * Updates fields in the document referred to by this `DocumentReference`.
